@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Mark Savage</title>
+    <link>https://marksavage.io/posts/</link>
+    <description>Recent content in Posts on Mark Savage</description>
+    <image>
+      <title>Mark Savage</title>
+      <url>https://marksavage.io/images/savage_profile_SMALL.png</url>
+      <link>https://marksavage.io/images/savage_profile_SMALL.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 16 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://marksavage.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Over The Wire: Bandit 0-5</title>
+      <link>https://marksavage.io/posts/bandit-0-5/</link>
+      <pubDate>Thu, 16 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://marksavage.io/posts/bandit-0-5/</guid>
+      <description>Every craftsman&amp;rsquo;s gotta practice his craft and the fine folks at Over the Wire have provided Bandit for us to do develop our skills.
+In the #bandit tag I&amp;rsquo;ll be posting my walkthrough of the various levels.
+Level 0-&amp;gt;1 The goal of this level is for you to log into the game using SSH. The host to which you need to connect is bandit.labs.overthewire.org, on port 2220. The username is bandit0 and the password is bandit0.</description>
+    </item>
+    
+    <item>
+      <title>Improve Your Online Privacy</title>
+      <link>https://marksavage.io/posts/online-privacy/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://marksavage.io/posts/online-privacy/</guid>
+      <description>I do not want to live in a world where we have no privacy and no freedom, where the unique value of the Internet is snuffed out.
+~ Edward Snowden
+You are only free so long as you are able to maintain your autonomy which is constantly under attack by Big Data.
+Compartmentalization of UIDs Your email address and phone number are Unique Identifiers that follow, track, and enable detailed profiles to be built about you.</description>
+    </item>
+    
+    <item>
+      <title>Hello Friend</title>
+      <link>https://marksavage.io/posts/hello/</link>
+      <pubDate>Mon, 16 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://marksavage.io/posts/hello/</guid>
+      <description>“Hello, friend?” That’s lame. Maybe I should give you a name… But that’s a slippery slope. You’re only in my head. We have to remember that… Shit. It’s actually happened. I’m talking to an imaginary person.
+— Mr. Robot S01E01</description>
+    </item>
+    
+    <item>
+      <title>Privacy Respecting Search</title>
+      <link>https://marksavage.io/posts/searx-search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://marksavage.io/posts/searx-search/</guid>
+      <description>I’m pretty fond of just searching the internet, following the links and unearthing previously unknown-to-me bits of information. I ditched Google a long time ago and had been using DuckDuckGo but felt it was time to roll my own solution. One that doesn’t involve any cookies, no tracking on page, and no tracking via the links in results.
+SearXNG Enter, SearXNG - a privacy-respecting, open metasearch engine. I went and installed Searx on my own server and I’ll show you how.</description>
+    </item>
+    
+  </channel>
+</rss>

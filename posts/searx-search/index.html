@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Privacy Respecting Search | Mark Savage</title>
+<meta name="keywords" content="">
+<meta name="description" content="I’m pretty fond of just searching the internet, following the links and unearthing previously unknown-to-me bits of information. I ditched Google a long time ago and had been using DuckDuckGo but felt it was time to roll my own solution. One that doesn’t involve any cookies, no tracking on page, and no tracking via the links in results.
+SearXNG Enter, SearXNG - a privacy-respecting, open metasearch engine. I went and installed Searx on my own server and I’ll show you how.">
+<meta name="author" content="Mark Savage">
+<link rel="canonical" href="https://canonical.url/to/page">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.dc96e9e0118e5e264a03d68b104df6ae869cfb73c61f5f89dd91aeb16b0d8c03.css" integrity="sha256-3Jbp4BGOXiZKA9aLEE32roac&#43;3PGH1&#43;J3ZGusWsNjAM=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://marksavage.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://marksavage.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://marksavage.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://marksavage.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://marksavage.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Privacy Respecting Search" />
+<meta property="og:description" content="I’m pretty fond of just searching the internet, following the links and unearthing previously unknown-to-me bits of information. I ditched Google a long time ago and had been using DuckDuckGo but felt it was time to roll my own solution. One that doesn’t involve any cookies, no tracking on page, and no tracking via the links in results.
+SearXNG Enter, SearXNG - a privacy-respecting, open metasearch engine. I went and installed Searx on my own server and I’ll show you how." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://marksavage.io/posts/searx-search/" />
+<meta property="og:image" content="https://marksavage.io/images/searxng.png" /><meta property="article:section" content="posts" />
+
+
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://marksavage.io/images/searxng.png" />
+<meta name="twitter:title" content="Privacy Respecting Search"/>
+<meta name="twitter:description" content="I’m pretty fond of just searching the internet, following the links and unearthing previously unknown-to-me bits of information. I ditched Google a long time ago and had been using DuckDuckGo but felt it was time to roll my own solution. One that doesn’t involve any cookies, no tracking on page, and no tracking via the links in results.
+SearXNG Enter, SearXNG - a privacy-respecting, open metasearch engine. I went and installed Searx on my own server and I’ll show you how."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://marksavage.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "Privacy Respecting Search",
+      "item": "https://marksavage.io/posts/searx-search/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Privacy Respecting Search",
+  "name": "Privacy Respecting Search",
+  "description": "I’m pretty fond of just searching the internet, following the links and unearthing previously unknown-to-me bits of information. I ditched Google a long time ago and had been using DuckDuckGo but felt it was time to roll my own solution. One that doesn’t involve any cookies, no tracking on page, and no tracking via the links in results.\nSearXNG Enter, SearXNG - a privacy-respecting, open metasearch engine. I went and installed Searx on my own server and I’ll show you how.",
+  "keywords": [
+    ""
+  ],
+  "articleBody": "I’m pretty fond of just searching the internet, following the links and unearthing previously unknown-to-me bits of information. I ditched Google a long time ago and had been using DuckDuckGo but felt it was time to roll my own solution. One that doesn’t involve any cookies, no tracking on page, and no tracking via the links in results.\nSearXNG Enter, SearXNG - a privacy-respecting, open metasearch engine. I went and installed Searx on my own server and I’ll show you how. But first, why?\nSearx aggregates results from a various search services and databases. Users are neither tracked nor profiled.\nWhen you search a term, Searx reaches out to sites such as Google, Bing, DuckDuckGo, Brave, Mojeek, Wikipedia, Tinyeye, Archive, Yahoo… you get the picture. There’s quite a few (plethora?) and they can be turned off and on in preferences to help fine tune your results.\nWhy Searx? Searx prevents Google and other search engines from building a profile on you With no profile, search results are generally aggregated rather than served in an echo chamber Searx has no ads, no tracking, and no passing of your data to other sevrices including the linked results you’re clicking Search results are aggregated to Searx’s IP address rather than Google seeing your home IP Installing SearXNG Go to Linode I installed this on my own web server at Linode for $5/month. Set yours up on a Debian/Ubuntu server.\nGet docker After the server is spun up, jump on in there via SSH and run the ol'\nsudo apt update \u0026\u0026 sudo apt upgrade -y I messed with installing via a few different install methods but found docker to be the easiest and quickest.\nsudo apt install docker.io -y Then we install Docker Compose\nsudo apt install docker-compose -y Pick a domain name You could run your Searx install straight from the IP address but that’s just not as fun as using your own cute cool domain name. For extra privacy points, use Njalla (famously the most trusted domain privacy provider in the world) to purchase your domain.\nYou’ll need to point your cute cool domain to Linode. Linode makes this quite easy so don’t fret.\nInstall Searx Back on your server, go to a directory to which you want to install Searx.\ncd /usr/local Then clone Searx from it’s github repository. Linode has git pre-installed, if I recall correctly. If your server doesn’t have git then install with these commands. If you do have git then just use the second command.\nsudo apt install git git clone https://github.com/searxng/searxng-docker.git Now, enter the directory you just created with your git clone command.\ncd searxng-docker If you’re following along you’re now in /usr/local/searxng-docker and in that directory is one hidden file we need to edit and that is .env.\nvim .env There are two lines to edit at the top (be sure to delete the # preceding each line)\nSEARXNG_HOSTNAME=yourdomain.xyz\nLETSENCRYPT_EMAIL=youremail@xyz.com\nThe first line is telling search the domain it’s on. The second line is so that Searx can automagically set your domain up with a Let’s Encrypt SSL file.\nThis next line creates a random key within Searx for security purposes.\nsed -i \"s|ultrasecretkey|$(openssl rand -hex 32)|g\" searxng/settings.yml Launch your Searx engine Let’s bring it all online from within the /usr/local/searxng-docker directory. The -d runs Searx in the background as a daemon.\nsudo docker-compose -d Now, open your browser and go to your cute cool domain name. Then be proud of the fact that you have reclaimed your autonomy from whichever search engine you had been using. You’ve now got your own.\nOr you can use mine… searx.cat\n",
+  "wordCount" : "604",
+  "inLanguage": "en",
+  "image":"https://marksavage.io/images/searxng.png","datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Mark Savage"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://marksavage.io/posts/searx-search/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Mark Savage",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://marksavage.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://marksavage.io" accesskey="h" title="Mark Savage (Alt + H)">Mark Savage</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://marksavage.io/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://marksavage.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://marksavage.io/search/" title="search (Alt &#43; /)" accesskey=/>
+                    <span>search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://marksavage.io">Home</a>&nbsp;»&nbsp;<a href="https://marksavage.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Privacy Respecting Search
+    </h1>
+    <div class="post-meta">3 min&nbsp;·&nbsp;604 words&nbsp;·&nbsp;Mark Savage&nbsp;|&nbsp;<a href="https://github.com/0xMRKSVG/marksavage/content" rel="noopener noreferrer" target="_blank">Suggest Changes</a>
+
+</div>
+  </header> 
+<figure class="entry-cover"><img loading="lazy" src="https://marksavage.io/images/searxng.png" alt="">
+        
+</figure><div class="toc">
+    <details >
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#searxng">SearXNG</a>
+      <ul>
+        <li><a href="#why-searx">Why Searx?</a></li>
+      </ul>
+    </li>
+    <li><a href="#installing-searxng">Installing SearXNG</a>
+      <ul>
+        <li><a href="#go-to-linode">Go to Linode</a></li>
+        <li><a href="#get-docker">Get docker</a></li>
+        <li><a href="#pick-a-domain-name">Pick a domain name</a></li>
+        <li><a href="#install-searx">Install Searx</a></li>
+        <li><a href="#launch-your-searx-engine">Launch your Searx engine</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>I’m pretty fond of just searching the internet, following the links and unearthing previously unknown-to-me bits of information. I ditched Google a long time ago and had been using DuckDuckGo but felt it was time to roll my own solution. One that doesn’t involve any cookies, no tracking on page, and no tracking via the links in results.</p>
+<h2 id="searxng">SearXNG<a hidden class="anchor" aria-hidden="true" href="#searxng">#</a></h2>
+<p>Enter, <a href="https://github.com/searxng/searxng">SearXNG</a> - a privacy-respecting, open metasearch engine. I went and installed Searx on my own server and I’ll show you how. But first, why?</p>
+<blockquote>
+<p>Searx aggregates results from a various search services and databases. Users are neither tracked nor profiled.</p>
+</blockquote>
+<p>When you search a term, Searx reaches out to sites such as Google, Bing, DuckDuckGo, Brave, Mojeek, Wikipedia, Tinyeye, Archive, Yahoo… you get the picture. There’s quite a few (plethora?) and they can be turned off and on in preferences to help fine tune your results.</p>
+<h3 id="why-searx">Why Searx?<a hidden class="anchor" aria-hidden="true" href="#why-searx">#</a></h3>
+<ul>
+<li>Searx prevents Google and other search engines from building a profile on you</li>
+<li>With no profile, search results are generally aggregated rather than served in an echo chamber</li>
+<li>Searx has no ads, no tracking, and no passing of your data to other sevrices including the linked results you’re clicking</li>
+<li>Search results are aggregated to Searx’s IP address rather than Google seeing your home IP</li>
+</ul>
+<h2 id="installing-searxng">Installing SearXNG<a hidden class="anchor" aria-hidden="true" href="#installing-searxng">#</a></h2>
+<h3 id="go-to-linode">Go to Linode<a hidden class="anchor" aria-hidden="true" href="#go-to-linode">#</a></h3>
+<p>I installed this on my own web server at <a href="https://www.linode.com">Linode</a> for $5/month. Set yours up on a Debian/Ubuntu server.</p>
+<h3 id="get-docker">Get docker<a hidden class="anchor" aria-hidden="true" href="#get-docker">#</a></h3>
+<p>After the server is spun up, jump on in there via SSH and run the ol'</p>
+<pre tabindex="0"><code>sudo apt update &amp;&amp; sudo apt upgrade -y
+</code></pre><p>I messed with installing via a few different install methods but found docker to be the easiest and quickest.</p>
+<pre tabindex="0"><code>sudo apt install docker.io -y
+</code></pre><p>Then we install Docker Compose</p>
+<pre tabindex="0"><code>sudo apt install docker-compose -y
+</code></pre><h3 id="pick-a-domain-name">Pick a domain name<a hidden class="anchor" aria-hidden="true" href="#pick-a-domain-name">#</a></h3>
+<p>You could run your Searx install straight from the IP address but that’s just not as fun as using your own <del>cute</del> cool domain name. For extra privacy points, use <a href="https://www.njal.la">Njalla</a> (famously the most trusted domain privacy provider in the world) to purchase your domain.</p>
+<p>You’ll need to point your <del>cute</del> cool domain to Linode. Linode makes this quite easy so don’t fret.</p>
+<h3 id="install-searx">Install Searx<a hidden class="anchor" aria-hidden="true" href="#install-searx">#</a></h3>
+<p>Back on your server, go to a directory to which you want to install Searx.</p>
+<pre tabindex="0"><code>cd /usr/local
+</code></pre><p>Then clone Searx from it’s github repository. Linode has git pre-installed, if I recall correctly. If your server doesn’t have git then install with these commands. If you do have git then just use the second command.</p>
+<pre tabindex="0"><code>sudo apt install git
+git clone https://github.com/searxng/searxng-docker.git
+</code></pre><p>Now, enter the directory you just created with your <code>git clone</code> command.</p>
+<pre tabindex="0"><code>cd searxng-docker
+</code></pre><p>If you’re following along you’re now in <code>/usr/local/searxng-docker</code> and in that directory is one hidden file we need to edit and that is <em>.env</em>.</p>
+<pre tabindex="0"><code>vim .env
+</code></pre><p>There are two lines to edit at the top (be sure to delete the # preceding each line)</p>
+<blockquote>
+<p>SEARXNG_HOSTNAME=yourdomain.xyz</p>
+<p><a href="mailto:LETSENCRYPT_EMAIL=youremail@xyz.com">LETSENCRYPT_EMAIL=youremail@xyz.com</a></p>
+</blockquote>
+<p>The first line is telling search the domain it’s on. The second line is so that Searx can automagically set your domain up with a Let’s Encrypt SSL file.</p>
+<p>This next line creates a random key within Searx for security purposes.</p>
+<pre tabindex="0"><code>sed -i &#34;s|ultrasecretkey|$(openssl rand -hex 32)|g&#34; searxng/settings.yml
+</code></pre><h3 id="launch-your-searx-engine">Launch your Searx engine<a hidden class="anchor" aria-hidden="true" href="#launch-your-searx-engine">#</a></h3>
+<p>Let’s bring it all online from within the <code>/usr/local/searxng-docker</code> directory. The <code>-d</code> runs Searx in the background as a daemon.</p>
+<pre tabindex="0"><code>sudo docker-compose -d
+</code></pre><p>Now, open your browser and go to your <del>cute</del> cool domain name. Then be proud of the fact that you have reclaimed your autonomy from whichever search engine you had been using. You’ve now got your own.</p>
+<p>Or you can use mine… <a href="https://searx.cat">searx.cat</a></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://marksavage.io/posts/hello/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Hello Friend</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2023 <a href="https://marksavage.io">Mark Savage</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
