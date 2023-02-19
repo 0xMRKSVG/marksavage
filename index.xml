@@ -12,15 +12,6 @@
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 19 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://marksavage.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>About</title>
-      <link>https://marksavage.io/about/</link>
-      <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://marksavage.io/about/</guid>
-      <description>About </description>
-    </item>
-    
-    <item>
       <title>Over The Wire: Bandit 6-10</title>
       <link>https://marksavage.io/posts/bandit-6-10/</link>
       <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
@@ -75,7 +66,27 @@ Compartmentalization of UIDs Your email address and phone number are Unique Iden
 — Mr. Robot S01E01</description>
     </item>
     
+    <item>
+      <title>About</title>
+      <link>https://marksavage.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://marksavage.io/about/</guid>
+      <description></description>
+    </item>
     
+    
+    
+    <item>
+      <title>What I&#39;m Doing Now</title>
+      <link>https://marksavage.io/now/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://marksavage.io/now/</guid>
+      <description>Updated 2023-02-19.
+Complete Beginner on Try Hack Me Having completed both The Cyber Mentor&amp;rsquo;s Linux 101 and Ropper&amp;rsquo;s Computing Fundamentals courses I&amp;rsquo;m now following the Complete Beginner path on try Hack Me.
+Fire and Bones Been seeing a lot of traumas lately while on duty at the firehouse. Which means there&amp;rsquo;s a lot of sights, images, sounds, and smells flashing across my mental movie screen. Have some time-off lined up so I&amp;rsquo;ll head out of town for a spell.</description>
+    </item>
     
   </channel>
 </rss>
