@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>gpoy on Mark Savage</title>
+    <link>https://marksavage.io/tags/gpoy/</link>
+    <description>Recent content in gpoy on Mark Savage</description>
+    <image>
+      <title>Mark Savage</title>
+      <url>https://marksavage.io/images/savage_profile_SMALL.png</url>
+      <link>https://marksavage.io/images/savage_profile_SMALL.png</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 19 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://marksavage.io/tags/gpoy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://marksavage.io/about/</link>
+      <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://marksavage.io/about/</guid>
+      <description>About </description>
+    </item>
+    
+  </channel>
+</rss>
