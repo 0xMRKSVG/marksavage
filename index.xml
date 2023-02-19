@@ -10,7 +10,19 @@
       <link>https://marksavage.io/images/savage_profile_SMALL.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 16 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://marksavage.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://marksavage.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Over The Wire: Bandit 6-10</title>
+      <link>https://marksavage.io/posts/bandit-6-10/</link>
+      <pubDate>Sun, 19 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://marksavage.io/posts/bandit-6-10/</guid>
+      <description>Every craftsman&amp;rsquo;s gotta practice his craft and the fine folks at Over the Wire have provided Bandit for us to do develop our skills.
+In the #bandit tag I&amp;rsquo;ll be posting my walkthrough of the various levels.
+Level 5-&amp;gt;6 The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
+human-readable 1033 bytes in size not executable sshpass -p lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR ssh bandit5@bandit.</description>
+    </item>
+    
     <item>
       <title>Over The Wire: Bandit 0-5</title>
       <link>https://marksavage.io/posts/bandit-0-5/</link>
