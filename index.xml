@@ -23,6 +23,16 @@ Level 0-&amp;gt;1 The goal of this level is for you to log into the game using S
     </item>
     
     <item>
+      <title>Privacy Respecting Search</title>
+      <link>https://marksavage.io/posts/searx-search/</link>
+      <pubDate>Sat, 04 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://marksavage.io/posts/searx-search/</guid>
+      <description>I’m pretty fond of just searching the internet, following the links and unearthing previously unknown-to-me bits of information. I ditched Google a long time ago and had been using DuckDuckGo but felt it was time to roll my own solution. One that doesn’t involve any cookies, no tracking on page, and no tracking via the links in results.
+SearXNG Enter, SearXNG - a privacy-respecting, open metasearch engine. I went and installed Searx on my own server and I’ll show you how.</description>
+    </item>
+    
+    <item>
       <title>Improve Your Online Privacy</title>
       <link>https://marksavage.io/posts/online-privacy/</link>
       <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
@@ -44,16 +54,6 @@ Compartmentalization of UIDs Your email address and phone number are Unique Iden
 — Mr. Robot S01E01</description>
     </item>
     
-    
-    <item>
-      <title>Privacy Respecting Search</title>
-      <link>https://marksavage.io/posts/searx-search/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://marksavage.io/posts/searx-search/</guid>
-      <description>I’m pretty fond of just searching the internet, following the links and unearthing previously unknown-to-me bits of information. I ditched Google a long time ago and had been using DuckDuckGo but felt it was time to roll my own solution. One that doesn’t involve any cookies, no tracking on page, and no tracking via the links in results.
-SearXNG Enter, SearXNG - a privacy-respecting, open metasearch engine. I went and installed Searx on my own server and I’ll show you how.</description>
-    </item>
     
     
   </channel>
